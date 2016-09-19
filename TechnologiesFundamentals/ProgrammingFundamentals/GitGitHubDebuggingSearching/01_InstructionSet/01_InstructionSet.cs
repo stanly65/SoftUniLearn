@@ -1,4 +1,5 @@
-﻿using System;
+﻿// 4 грешки в кода
+using System;
 
 class InstructionSet_broken
 {
@@ -6,7 +7,8 @@ class InstructionSet_broken
     {
         string opCode = Console.ReadLine();
 
-        while (opCode != "end")
+        //while (opCode != "end")
+        while (opCode != "END")
         {
             string[] codeArgs = opCode.Split(' ');
 
@@ -15,33 +17,44 @@ class InstructionSet_broken
             {
                 case "INC":
                     {
-                        int operandOne = int.Parse(codeArgs[1]);
-                        result = operandOne++;
+                        long operandOne = long.Parse(codeArgs[1]);
+                        //result = operandOne++;
+                        result = operandOne + 1;
                         break;
                     }
                 case "DEC":
                     {
-                        int operandOne = int.Parse(codeArgs[1]);
-                        result = operandOne--;
+                        long operandOne = long.Parse(codeArgs[1]);
+                        //result = operandOne--;
+                        result = operandOne - 1;
                         break;
                     }
                 case "ADD":
                     {
-                        int operandOne = int.Parse(codeArgs[1]);
-                        int operandTwo = int.Parse(codeArgs[2]);
+                        long operandOne = long.Parse(codeArgs[1]);
+                        long operandTwo = long.Parse(codeArgs[2]);
                         result = operandOne + operandTwo;
                         break;
                     }
                 case "MLA":
                     {
-                        int operandOne = int.Parse(codeArgs[1]);
-                        int operandTwo = int.Parse(codeArgs[2]);
-                        result = (long)(operandOne * operandTwo);
+                        long operandOne = long.Parse(codeArgs[1]);
+                        long operandTwo = long.Parse(codeArgs[2]);
+                        // result = (long)(operandOne * operandTwo);
+                        result = operandOne * operandTwo;
                         break;
                     }
             }
 
             Console.WriteLine(result);
+            //add
+            opCode = Console.ReadLine();
         }
     }
 }
+
+//Грешки в кода:
+//Input "END" в кода е "end" -->"END"
+//Input "END" не се чете --> Console.ReadLine();
+//operandOne++ стойността се запазва(после нарастване) -->++опрандОне
+//(long) кастването променя резултата, променяме на long променливите
